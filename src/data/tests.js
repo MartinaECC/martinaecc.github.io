@@ -1,6 +1,7 @@
 import { pdpTest } from "./pdp.js";
 import { bftiTest } from "./bfti.js";
 import { mbtiTest } from "./mbti.js";
+import { wuxingTest } from "./wuxing.js";
 
 export const tests = [
     {
@@ -35,6 +36,17 @@ export const tests = [
         description: "93 题标准版本，从四个维度解读你的人格类型和行为偏好。",
         tags: ["人格类型", "15-20分钟", "93题"],
         data: mbtiTest
+    },
+    {
+        id: "wuxing",
+        path: "/wuxing",
+        title: "五行能量测试",
+        icon: "五行",
+        status: "live",
+        cardClass: "wuxing-card",
+        description: "输入出生时间，测算你的八字格局与五行能量分布，找到五行喜用方向。",
+        tags: ["八字命理", "1分钟", "出生日期"],
+        data: wuxingTest
     },
     {
         id: "more",
