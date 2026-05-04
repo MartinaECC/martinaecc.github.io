@@ -65,8 +65,8 @@ function calculateScores() {
     const baseValues = typeOrder.slice(0, 4).map((type) => scores[type]);
     const max = Math.max(...baseValues);
     const min = Math.min(...baseValues);
-    const average = baseValues.reduce((sum, value) => sum + value, 0) / baseValues.length;
-    scores.chameleon = Math.max(0, Math.round(8 - (max - min) + average * 0.2));
+    const balanceBonus = Math.max(0, 6 - (max - min) * 2);
+    scores.chameleon += balanceBonus;
     return scores;
 }
 
