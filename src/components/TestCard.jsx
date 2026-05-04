@@ -13,9 +13,7 @@ export default function TestCard({ test }) {
 
     return (
         <article className={`test-card ${test.cardClass || ""} ${isComingSoon ? "coming-soon" : ""}`}>
-            <span className="card-watermark">{test.icon}</span>
             <div className="card-topline">
-                <span className="test-icon">{test.icon}</span>
                 <span className={`status-pill ${statusClass}`}>{statusLabel[test.status]}</span>
             </div>
             <h2>{test.title}</h2>
