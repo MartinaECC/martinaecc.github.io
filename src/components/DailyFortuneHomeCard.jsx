@@ -16,13 +16,16 @@ export default function DailyFortuneHomeCard({
         <p className="eyebrow">Daily Fortune</p>
         <h2>每日运势</h2>
         {isEditing ? (
-          <DailyFortuneForm
-            initialProfile={profile}
-            onSubmit={onSubmit}
-            compact
-            hideBackLink
-            submitLabel="保存并查看今日运势"
-          />
+          <>
+            <p className="daily-home-description">填写您的生日看看今日运势</p>
+            <DailyFortuneForm
+              initialProfile={profile}
+              onSubmit={onSubmit}
+              compact
+              hideBackLink
+              submitLabel="保存并查看今日运势"
+            />
+          </>
         ) : profile ? (
           <>
             <p className="daily-home-status">已保存生日信息</p>
