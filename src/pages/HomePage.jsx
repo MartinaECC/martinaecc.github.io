@@ -6,8 +6,9 @@ export default function HomePage() {
         <main className="container home-shell">
             <section className="landing-hero">
                 <div className="landing-copy">
+                    <img src="/images/logo.png" alt="优测小宇宙" className="site-logo" />
                     <p className="eyebrow">Assessment Library</p>
-                    <h1>测试小宇宙</h1>
+                    <h1>优测小宇宙</h1>
                     <p className="lead">一组温和而有结构的自我探索测试，帮助你理解性格、动机与行动模式。</p>
                     <p className="small-note">测试结果仅用于自我观察，不替代专业心理评估。</p>
                 </div>
