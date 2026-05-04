@@ -24,10 +24,10 @@ export default function TestPage({ testId }) {
 
     if (!test) return <Navigate to="/" replace />;
 
-    const question = test.questions[currentQuestionIndex];
+    const question = test.questions ? test.questions[currentQuestionIndex] : null;
     const selectedType = answers[currentQuestionIndex];
-    const isLastQuestion = currentQuestionIndex === test.questions.length - 1;
-    const progress = ((currentQuestionIndex + 1) / test.questions.length) * 100;
+    const isLastQuestion = test.questions ? (currentQuestionIndex === test.questions.length - 1) : false;
+    const progress = test.questions ? ((currentQuestionIndex + 1) / test.questions.length) * 100 : 0;
 
     function selectAnswer(type) {
         setAnswers((currentAnswers) => {
