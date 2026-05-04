@@ -56,7 +56,7 @@ export default function HomePage() {
                 </aside>
             </section>
 
-            <section className="home-feature-section" aria-label="每日运势模块">
+            <section className="home-module-panel home-module-fortune" aria-label="每日运势模块">
                 <DailyFortuneHomeCard
                   profile={profile}
                   isEditing={isEditingDaily}
@@ -67,16 +67,20 @@ export default function HomePage() {
                 />
             </section>
 
-            <section className="section-heading test-section-heading" aria-label="测试模块">
-                <p className="eyebrow">Assessments</p>
-                <h2>测试</h2>
-                <p className="lead">从不同主题开始观察自己</p>
-            </section>
+            <section className="home-module-panel home-module-assessments" aria-label="测试模块">
+                <div className="section-heading test-section-heading">
+                    <div>
+                        <p className="eyebrow">Assessments</p>
+                        <h2>个性测试</h2>
+                    </div>
+                    <p className="lead">从不同主题开始观察自己</p>
+                </div>
 
-            <section className="test-grid" aria-label="测试列表">
-                {tests.map((test) => (
-                    <TestCard key={test.id} test={test} />
-                ))}
+                <div className="test-grid">
+                    {tests.map((test) => (
+                        <TestCard key={test.id} test={test} />
+                    ))}
+                </div>
             </section>
         </main>
     );
