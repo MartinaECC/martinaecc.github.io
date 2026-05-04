@@ -8,6 +8,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/pdp" element={<TestPage testId="pdp" />} />
             <Route path="/bfti" element={<TestPage testId="bfti" />} />
+            <Route path="/mbti" element={<TestPage testId="mbti" />} />
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     );
