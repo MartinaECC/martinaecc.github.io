@@ -1170,23 +1170,7 @@ p {
     }
 
     .hero-illustration {
-        min-height: 330px;
-    }
-
-    .orbit-map {
-        right: 0;
-        width: 100%;
-    }
-
-    .reflection-card {
-        left: 4px;
-        bottom: 78px;
-        width: 170px;
-    }
-
-    .hero-aside {
-        width: 88%;
-        padding: 16px;
+        display: none;
     }
 
     .section-heading {
