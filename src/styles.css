@@ -33,6 +33,12 @@
     --koala: #75836d;
     --owl: #756c86;
     --chameleon: #9b7a48;
+  /* Five Elements Traditional Colors (素雅版) */
+  --wuxing-mu: #5b7c6b;
+  --wuxing-huo: #a05a4c;
+  --wuxing-tu: #b58920;
+  --wuxing-jin: #8a846a;
+  --wuxing-shui: #405870;
 }
 
 #root {
@@ -474,6 +480,11 @@ p {
     background: rgba(181, 169, 212, 0.18);
 }
 
+.wuxing-card::before,
+.wuxing-card::after {
+    background: rgba(160, 90, 76, 0.18);
+}
+
 .tag-row span {
     padding: 6px 10px;
     color: var(--muted);
@@ -811,6 +822,290 @@ p {
     margin: 16px 0 0;
     color: var(--subtle);
     font-size: 0.9rem;
+}
+
+/* 五行能量测试表单样式 */
+.birth-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+}
+
+.birth-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.birth-form-group label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+.birth-form-group select,
+.birth-form-group input {
+    padding: 10px 14px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    font-size: 1rem;
+    color: var(--text);
+    font-family: var(--font-sans);
+}
+
+.birth-form-group select:focus,
+.birth-form-group input:focus {
+    outline: none;
+    border-color: var(--wuxing-tu);
+}
+
+.gender-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.gender-btn {
+    padding: 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.18s ease;
+}
+
+.gender-btn.selected {
+    background: var(--wuxing-huo);
+    color: white;
+    border-color: var(--wuxing-huo);
+}
+
+.mode-switch {
+    display: flex;
+    grid-column: 1 / -1;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.mode-switch button {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.mode-switch button.active {
+    background: rgba(181, 137, 32, 0.15);
+    border-color: var(--wuxing-tu);
+    color: var(--wuxing-tu);
+}
+
+.ganzhi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.ganzhi-card {
+    text-align: center;
+    padding: 20px 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+}
+
+.ganzhi-card .pillar-title {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.ganzhi-card .gan {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.ganzhi-card .zhi {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.ganzhi-card .wuxing-name {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* 五行颜色类 */
+.wuxing-mu { color: var(--wuxing-mu); }
+.wuxing-huo { color: var(--wuxing-huo); }
+.wuxing-tu { color: var(--wuxing-tu); }
+.wuxing-jin { color: var(--wuxing-jin); }
+.wuxing-shui { color: var(--wuxing-shui); }
+
+.wuxing-score-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.wuxing-score-item {
+    text-align: center;
+    padding: 16px 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+}
+
+.wuxing-score-item .score {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 4px 0;
+}
+
+.wuxing-score-bar {
+    height: 6px;
+    margin-top: 12px;
+    background: var(--surface-muted);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.wuxing-score-bar-fill {
+    height: 100%;
+    border-radius: inherit;
+}
+
+.dayun-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.dayun-item {
+    text-align: center;
+    padding: 14px 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+}
+
+.dayun-item .age {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.dayun-item .ganzhi {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 4px 0;
+}
+
+.xiyong-card {
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    margin: 20px 0;
+}
+
+.xiyong-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.xiyong-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.xiyong-tag {
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-weight: 700;
+    color: white;
+}
+
+.basic-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.info-item {
+    padding: 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.info-item .label {
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.info-item .value {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* 响应式调整 */
+@media (max-width: 960px) {
+    .birth-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ganzhi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .wuxing-score-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .dayun-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .basic-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .birth-form {
+        grid-template-columns: 1fr;
+    }
+    .ganzhi-grid {
+        grid-template-columns: 1fr;
+    }
+    .wuxing-score-list {
+        grid-template-columns: 1fr;
+    }
+    .dayun-list {
+        grid-template-columns: 1fr;
+    }
+    .basic-info {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 960px) {
