@@ -61,6 +61,20 @@ export default function TestPage({ testId }) {
                         <p className="eyebrow">{test.eyebrow}</p>
                         <h1>{test.title}</h1>
                         <p className="lead">{test.description}</p>
+                        <div className="test-intro-list" aria-label="PDP五种行为风格">
+                            {test.typeOrder.map((type) => {
+                                const profile = test.profiles[type];
+
+                                return (
+                                    <article className={`type-card ${type}`} key={type}>
+                                        <span className="type-marker">{test.typeLabels[type].slice(0, 1)}</span>
+                                        <h3>{test.typeLabels[type]}</h3>
+                                        <p>{profile.tagline}</p>
+                                    </article>
+                                );
+                            })}
+                        </div>
+                        <p className="note">约 {test.duration}，共 {test.questionCount} 题。请选择最接近当下真实状态的选项。</p>
                         <div className="progress-bar"><div className="progress-fill" style={{ width: `${progress}%` }}></div></div>
                         <p className="progress-text">第 <span>{currentQuestionIndex + 1}</span>/{test.questions.length} 题</p>
                         <QuestionCard

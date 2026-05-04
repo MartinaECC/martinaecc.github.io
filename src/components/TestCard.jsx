@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 const statusLabel = {
-    live: "已上线",
-    "coming-soon": "即将上线",
-    placeholder: "预留位置"
+    live: "可测试",
+    "coming-soon": "筹备中",
+    placeholder: "计划中"
 };
 
 export default function TestCard({ test }) {
@@ -26,7 +26,7 @@ export default function TestCard({ test }) {
             </div>
             {test.path && (
                 <Link className={`btn ${isLive ? "primary-btn" : "secondary-btn"} card-action`} to={test.path}>
-                    {isLive ? "开始测试" : "查看预告"}
+                    {isLive ? "进入测试" : "查看说明"}
                 </Link>
             )}
         </article>

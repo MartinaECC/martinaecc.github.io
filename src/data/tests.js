@@ -5,32 +5,32 @@ export const tests = [
         id: "pdp",
         path: "/pdp",
         title: "PDP性格测试",
-        icon: "🧭",
+        icon: "PDP",
         status: "live",
         cardClass: "pdp-card",
-        description: "通过 30 道题了解你的行为风格：老虎、孔雀、考拉、猫头鹰、变色龙。",
-        tags: ["性格识别", "5-8分钟", "30题"],
+        description: "从五种行为风格理解你的表达方式、决策习惯与协作倾向。",
+        tags: ["行为风格", "5-8分钟", "30题"],
         data: pdpTest
     },
     {
         id: "bfti",
         path: "/bfti",
         title: "BFTI暴富TI测试",
-        icon: "💸",
+        icon: "BFTI",
         status: "coming-soon",
         cardClass: "bfti-card",
-        description: "暴富TI测试筹备中。未来会帮你看看自己的暴富人格、财富直觉和搞钱姿势。",
-        tags: ["财富人格", "娱乐测试", "预留"]
+        description: "一个关于财富动机、风险偏好与行动模式的轻量探索测试。",
+        tags: ["财富动机", "筹备中", "预留"]
     },
     {
         id: "more",
         path: null,
         title: "更多测试",
-        icon: "✨",
+        icon: "NEXT",
         status: "placeholder",
         cardClass: "placeholder-card",
-        description: "这里会继续放新的测试：关系模式、职场风格、消费人格、灵感雷达等。",
-        tags: ["待定", "可扩展"]
+        description: "后续会逐步加入关系模式、职场风格、消费人格与更多自我探索主题。",
+        tags: ["后续计划", "可扩展"]
     }
 ];
 

@@ -15,8 +15,8 @@ export default function ResultView({ test, scores, onRestart }) {
                 datasets: [{
                     label: "性格维度得分",
                     data: test.typeOrder.map((type) => scores[type]),
-                    backgroundColor: "rgba(207,111,59,.18)",
-                    borderColor: "#cf6f3b",
+                    backgroundColor: "rgba(111, 131, 114, 0.16)",
+                    borderColor: "#6f8372",
                     pointBackgroundColor: test.typeOrder.map((type) => test.profiles[type].color),
                     pointBorderColor: "#fff",
                     pointRadius: 5,
@@ -42,10 +42,15 @@ export default function ResultView({ test, scores, onRestart }) {
     return (
         <>
             <h1>你的测试结果</h1>
-            <div className="result-chart"><canvas ref={canvasRef}></canvas></div>
-            <div className="hero-result" style={{ background: `linear-gradient(135deg, ${profile.color}, #3d2f29)` }}>
-                <h2>{profile.icon} {profile.name}</h2>
-                <p>{profile.tagline}</p>
+            <div className="result-layout">
+                <div className="result-summary">
+                    <span className={`type-marker ${dominantType}`}>{test.typeLabels[dominantType].slice(0, 1)}</span>
+                    <p className="eyebrow">Primary Pattern</p>
+                    <h2>{profile.name}</h2>
+                    <p>{profile.tagline}</p>
+                    <p className="disclaimer">这个结果描述的是你在本次作答中呈现出的主要倾向，不代表固定不变的人格标签。</p>
+                </div>
+                <div className="result-chart"><canvas ref={canvasRef}></canvas></div>
             </div>
 
             <div className="description-grid">
@@ -62,7 +67,7 @@ export default function ResultView({ test, scores, onRestart }) {
 
                     return (
                         <div className="score-card" key={type}>
-                            <h3>{item.icon} {test.typeLabels[type]}</h3>
+                            <h3>{test.typeLabels[type]}</h3>
                             <strong style={{ color: item.color }}>{scores[type]}</strong>
                             <p>{item.tagline}</p>
                             <div className="score-bar"><span style={{ width: `${width}%`, background: item.color }}></span></div>

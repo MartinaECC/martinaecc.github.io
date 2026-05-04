@@ -7,12 +7,12 @@ export default function ComingSoonPage({ test }) {
                 <Link className="back-link" to="/">← 返回测试主页</Link>
                 <p className="eyebrow">BFTI Wealth Type Indicator</p>
                 <h1>{test?.title || "测试筹备中"}</h1>
-                <p className="lead">暴富TI正在筹备中。未来这里会测试你的暴富人格、财富直觉、搞钱姿势和风险偏好。</p>
+                <p className="lead">BFTI 正在设计中。它会从财富动机、风险感受、行动节奏和资源整合方式出发，帮助你观察自己的财富相关行为模式。</p>
 
                 <div className="teaser-panel">
-                    <span className="test-icon">{test?.icon || "✨"}</span>
-                    <h2>即将上线</h2>
-                    <p>这个位置已经预留好，后续只需要补充题库、计分规则和结果画像。</p>
+                    <span className="test-icon">{test?.icon || "NEXT"}</span>
+                    <h2>正在筹备题库与结果模型</h2>
+                    <p>这个位置已经预留好，后续会补充 BFTI 的题库、计分规则和结果画像，再开放正式测试。</p>
                 </div>
 
                 <Link className="btn primary-btn" to="/">返回首页</Link>
