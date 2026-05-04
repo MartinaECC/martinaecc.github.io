@@ -1,13 +1,27 @@
-# PDP性格测试
+# MartinaECC 测试宇宙
 
-这是一个部署在 GitHub Pages 上的 PDP 性格测试静态网站。
+这是一个部署在 GitHub Pages 上的测试集合网站。
 
 ## 功能
 
-- 30 道 PDP 行为风格测试题
-- 自动计算老虎型、孔雀型、考拉型、猫头鹰型、变色龙型得分
-- 结果页展示主性格类型、雷达图、优势说明和沟通建议
+- 首页展示多个测试入口
+- `pdp/`：PDP 性格测试，包含 30 道题和 5 种结果类型
+- `bfti/`：BFTI 暴富TI测试占位页
 - 支持电脑和手机访问
+
+## 目录结构
+
+```text
+.
+├── index.html
+├── style.css
+├── pdp/
+│   ├── index.html
+│   ├── questions.js
+│   └── script.js
+└── bfti/
+    └── index.html
+```
 
 ## 本地预览
 
