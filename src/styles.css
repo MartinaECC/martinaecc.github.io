@@ -1,5 +1,7 @@
 * { box-sizing: border-box; }
 
+#root { min-height: 100vh; }
+
 :root {
     --bg: #f6f1e9;
     --card: #fffaf3;
@@ -62,6 +64,7 @@ h2, h3 { margin: 0; }
 .teaser-panel { margin: 28px 0; padding: 28px; background: #fffdf9; border: 1px solid var(--line); border-radius: 28px; }
 .teaser-panel h2 { margin-top: 12px; }
 .teaser-panel p { color: var(--muted); }
+.advice-card { margin-top: 16px; }
 
 .types-intro { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin: 28px 0; }
 .type-card, .question-container, .result-chart, .description-card, .score-card { background: #fffdf9; border: 1px solid var(--line); border-radius: 22px; }

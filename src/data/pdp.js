@@ -1,4 +1,14 @@
-const questions = [
+export const typeOrder = ["tiger", "peacock", "koala", "owl", "chameleon"];
+
+export const typeLabels = {
+    tiger: "老虎型",
+    peacock: "孔雀型",
+    koala: "考拉型",
+    owl: "猫头鹰型",
+    chameleon: "变色龙型"
+};
+
+export const questions = [
     {
         text: "面对一个新目标时，你通常会怎么做？",
         options: [
@@ -301,7 +311,7 @@ const questions = [
     }
 ];
 
-const typeProfiles = {
+export const typeProfiles = {
     tiger: {
         name: "老虎型",
         icon: "🐯",
@@ -352,4 +362,34 @@ const typeProfiles = {
         roles: "项目经理、产品经理、顾问、组织协调、综合管理。",
         advice: "保持灵活的同时，也要明确自己的核心原则和优先级，避免过度迎合环境。"
     }
+};
+
+export function calculateScores(answers) {
+    const scores = { tiger: 0, peacock: 0, koala: 0, owl: 0, chameleon: 0 };
+
+    answers.forEach((answer) => {
+        if (answer) scores[answer] += 1;
+    });
+
+    const baseValues = ["tiger", "peacock", "koala", "owl"].map((type) => scores[type]);
+    const max = Math.max(...baseValues);
+    const min = Math.min(...baseValues);
+    const balanceBonus = Math.max(0, 6 - (max - min) * 2);
+    scores.chameleon += balanceBonus;
+
+    return scores;
+}
+
+export const pdpTest = {
+    id: "pdp",
+    title: "PDP性格测试",
+    eyebrow: "PDP Personality Test",
+    description: "通过 30 道题了解你的主要行为风格：老虎型、孔雀型、考拉型、猫头鹰型或变色龙型。",
+    duration: "5-8分钟",
+    questionCount: questions.length,
+    questions,
+    profiles: typeProfiles,
+    typeOrder,
+    typeLabels,
+    calculateScores
 };
