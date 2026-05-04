@@ -1,4 +1,5 @@
 import { pdpTest } from "./pdp.js";
+import { bftiTest } from "./bfti.js";
 
 export const tests = [
     {
@@ -17,10 +18,11 @@ export const tests = [
         path: "/bfti",
         title: "BFTI暴富TI测试",
         icon: "BFTI",
-        status: "coming-soon",
+        status: "live",
         cardClass: "bfti-card",
-        description: "一个关于财富动机、风险偏好与行动模式的轻量探索测试。",
-        tags: ["财富动机", "筹备中", "预留"]
+        description: "一个关于财富动机、风险偏好与行动模式的轻量探索测试，看看你是哪种暴富体质？",
+        tags: ["财富人格", "5-8分钟", "30题"],
+        data: bftiTest
     },
     {
         id: "more",

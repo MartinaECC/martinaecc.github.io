@@ -9,7 +9,7 @@ export default function App() {
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/pdp" element={<TestPage testId="pdp" />} />
-            <Route path="/bfti" element={<ComingSoonPage test={tests.find((test) => test.id === "bfti")} />} />
+            <Route path="/bfti" element={<TestPage testId="bfti" />} />
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     );
