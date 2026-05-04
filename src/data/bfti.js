@@ -486,6 +486,19 @@ const bftiTestData = {
   }
 };
 
+export const typeOrder = ["E", "I", "R", "S", "Q", "L", "N", "Sf"];
+
+export const typeLabels = {
+  E: "向外搞钱",
+  I: "向内搞钱",
+  R: "敢加杠杆",
+  S: "稳扎稳打",
+  Q: "快进快出",
+  L: "长期持有",
+  N: "抓住风口",
+  Sf: "稳走正道"
+};
+
 export const bftiTest = {
   id: "bfti",
   title: "BFTI暴富TI测试",
@@ -496,5 +509,9 @@ export const bftiTest = {
   questions: bftiTestData.questions,
   dimensions: bftiTestData.dimensions,
   profiles: bftiTestData.profiles,
-  calculateScores: bftiTestData.calculateScores
+  typeOrder,
+  typeLabels,
+  calculateScores: function(answers) {
+    return bftiTestData.calculateScores(answers);
+  }
 };
