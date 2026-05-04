@@ -1,5 +1,6 @@
 import { pdpTest } from "./pdp.js";
 import { bftiTest } from "./bfti.js";
+import { mbtiTest } from "./mbti.js";
 
 export const tests = [
     {
@@ -23,6 +24,17 @@ export const tests = [
         description: "一个关于财富动机、风险偏好与行动模式的轻量探索测试，看看你是哪种暴富体质？",
         tags: ["财富人格", "5-8分钟", "30题"],
         data: bftiTest
+    },
+    {
+        id: "mbti",
+        path: "/mbti",
+        title: "MBTI十六型人格",
+        icon: "MBTI",
+        status: "live",
+        cardClass: "mbti-card",
+        description: "93 题标准版本，从四个维度解读你的人格类型和行为偏好。",
+        tags: ["人格类型", "15-20分钟", "93题"],
+        data: mbtiTest
     },
     {
         id: "more",
