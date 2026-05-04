@@ -832,6 +832,14 @@ p {
     margin: 28px 0;
 }
 
+.birth-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.navigation-full-width {
+    grid-column: 1 / -1;
+}
+
 .birth-form-group {
     display: flex;
     flex-direction: column;

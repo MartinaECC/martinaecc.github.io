@@ -79,7 +79,7 @@ function determineYongShen(scores) {
 // 计算函数，供TestPage调用
 export function calculateScores(birthInfo) {
   const { year, month, day, hour, minute, gender } = birthInfo;
-  const solar = Solar.fromYmdHms(year, month, day, hour, minute);
+  const solar = Solar.fromYmdHms(year, month, day, hour, minute, 0);
   const lunar = Lunar.fromSolar(solar);
   const eightChar = lunar.getEightChar();
   
@@ -87,23 +87,23 @@ export function calculateScores(birthInfo) {
     year: eightChar.getYearGan() + eightChar.getYearZhi(),
     month: eightChar.getMonthGan() + eightChar.getMonthZhi(),
     day: eightChar.getDayGan() + eightChar.getDayZhi(),
-    hour: eightChar.getHourGan() + eightChar.getHourZhi(),
+    hour: eightChar.getTimeGan() + eightChar.getTimeZhi(),
     yearGan: eightChar.getYearGan(),
     yearZhi: eightChar.getYearZhi(),
     monthGan: eightChar.getMonthGan(),
     monthZhi: eightChar.getMonthZhi(),
     dayGan: eightChar.getDayGan(),
     dayZhi: eightChar.getDayZhi(),
-    hourGan: eightChar.getHourGan(),
-    hourZhi: eightChar.getHourZhi(),
-    zodiac: lunar.getZodiac(),
+    hourGan: eightChar.getTimeGan(),
+    hourZhi: eightChar.getTimeZhi(),
+    zodiac: lunar.getYearShengXiao(),
     solar: { year, month, day, hour, minute },
     gender
   };
   
   const scores = calculateFiveElements(bazi);
   const yongShen = determineYongShen(scores);
-  const dayun = eightChar.getDaYun(gender === 'male');
+  const dayun = eightChar.getYun(gender === 'male' ? 1 : 0).getDaYun();
   
   return {
     bazi,

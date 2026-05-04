@@ -7,8 +7,9 @@ import { getLiveTest } from "../data/tests.js";
 
 export default function TestPage({ testId }) {
     const test = getLiveTest(testId);
+    const questions = test?.questions || [];
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [answers, setAnswers] = useState(() => new Array(test?.questions.length || 0).fill(null));
+    const [answers, setAnswers] = useState(() => new Array(questions.length).fill(null));
     const [scores, setScores] = useState(null);
 
     // For form-based tests (like wuxing), store birth info
@@ -24,10 +25,10 @@ export default function TestPage({ testId }) {
 
     if (!test) return <Navigate to="/" replace />;
 
-    const question = test.questions ? test.questions[currentQuestionIndex] : null;
+    const question = questions[currentQuestionIndex] || null;
     const selectedType = answers[currentQuestionIndex];
-    const isLastQuestion = test.questions ? (currentQuestionIndex === test.questions.length - 1) : false;
-    const progress = test.questions ? ((currentQuestionIndex + 1) / test.questions.length) * 100 : 0;
+    const isLastQuestion = questions.length ? (currentQuestionIndex === questions.length - 1) : false;
+    const progress = questions.length ? ((currentQuestionIndex + 1) / questions.length) * 100 : 0;
 
     function selectAnswer(type) {
         setAnswers((currentAnswers) => {
@@ -39,7 +40,7 @@ export default function TestPage({ testId }) {
         // 自动跳转到下一题（最后一题不自动跳转）
         if (!isLastQuestion) {
             setTimeout(() => {
-                setCurrentQuestionIndex((index) => Math.min(index + 1, test.questions.length - 1));
+                setCurrentQuestionIndex((index) => Math.min(index + 1, questions.length - 1));
             }, 180);
         }
     }
@@ -50,7 +51,7 @@ export default function TestPage({ testId }) {
             return;
         }
 
-        setCurrentQuestionIndex((index) => Math.min(index + 1, test.questions.length - 1));
+        setCurrentQuestionIndex((index) => Math.min(index + 1, questions.length - 1));
     }
 
     function submit() {
@@ -58,7 +59,7 @@ export default function TestPage({ testId }) {
 
         if (unansweredIndex !== -1) {
             setCurrentQuestionIndex(unansweredIndex);
-            alert(`还有第 ${unansweredIndex + 1} 题未作答，请完成后查看结果。`);
+            alert(`还有 ${unansweredIndex + 1} 题未作答，请完成后查看结果。`);
             return;
         }
 
@@ -67,21 +68,25 @@ export default function TestPage({ testId }) {
 
     function restart() {
         setCurrentQuestionIndex(0);
-        setAnswers(new Array(test.questions.length).fill(null));
+        setAnswers(new Array(questions.length).fill(null));
         setScores(null);
     }
 
     // Generate year options (1900-2030)
     function generateYearOptions() {
         const years = [];
-        for (let y = 1900; y <= 2030; y++) years.push(y);
+        for (let y = 1900; y <= 2030; y++){
+            years.push(y);
+        }
         return years;
     }
 
     // Generate month options
     function generateMonthOptions() {
         const months = [];
-        for (let m = 1; m <= 12; m++) months.push(m);
+        for (let m = 1; m <= 12; m++){
+            months.push(m);
+        }
         return months;
     }
 
@@ -98,7 +103,7 @@ export default function TestPage({ testId }) {
     // Submit form for calculation
     function handleFormSubmit() {
         if (!birthInfo.gender) {
-            alert('请选择性别。');
+            alert("请选择性别。");
             return;
         }
         const result = test.calculateScores(birthInfo);
@@ -128,90 +133,107 @@ export default function TestPage({ testId }) {
                             <p className="eyebrow">{test.eyebrow}</p>
                             <h1>{test.title}</h1>
                             <p className="lead">{test.description}</p>
-                            
-                            <div className="wuxing-form">
-                                <div className="form-row">
-                                    <label>性别</label>
-                                    <div className="gender-options">
-                                        <button 
-                                            className={`gender-btn ${birthInfo.gender === 'male' ? 'active' : ''}`}
-                                            onClick={() => handleFieldChange('gender', 'male')}
-                                        >男</button>
-                                        <button 
-                                            className={`gender-btn ${birthInfo.gender === 'female' ? 'active' : ''}`}
-                                            onClick={() => handleFieldChange('gender', 'female')}
-                                        >女</button>
-                                    </div>
-                                </div>
+                            <p className="note">请正确填写出生公历时间，系统将为你排盘计算八字五行能量分布。</p>
 
-                                <div className="form-row">
-                                    <label htmlFor="year">出生年</label>
-                                    <select 
-                                        id="year" 
-                                        value={birthInfo.year}
-                                        onChange={(e) => handleFieldChange('year', parseInt(e.target.value))}
-                                    >
-                                        {generateYearOptions().map(y => <option key={y} value={y}>{y}</option>)}
-                                    </select>
-                                </div>
-
-                                <div className="form-row">
-                                    <label htmlFor="month">出生月</label>
-                                    <select 
-                                        id="month" 
-                                        value={birthInfo.month}
-                                        onChange={(e) => handleFieldChange('month', parseInt(e.target.value))}
-                                    >
-                                        {generateMonthOptions().map(m => <option key={m} value={m}>{m}</option>)}
-                                    </select>
-                                </div>
-
-                                <div className="form-row">
-                                    <label htmlFor="day">出生日</label>
-                                    <select 
-                                        id="day" 
-                                        value={birthInfo.day}
-                                        onChange={(e) => handleFieldChange('day', parseInt(e.target.value))}
-                                    >
-                                        {Array.from({ length: getDaysInMonth(birthInfo.year, birthInfo.month) }, (_, i) => i + 1).map(d => (
-                                            <option key={d} value={d}>{d}</option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                <div className="form-mode-selector">
-                                    <button 
-                                        className={`mode-btn ${timeMode === 'precise' ? 'active' : ''}`}
-                                        onClick={() => setTimeMode('precise')}
-                                    >精确出生时间</button>
-                                    <button 
-                                        className={`mode-btn ${timeMode === 'approx' ? 'active' : ''}`}
-                                        onClick={() => setTimeMode('approx')}
-                                    >只知道大致时间</button>
-                                </div>
-
-                                {timeMode === 'precise' && (
-                                    <div className="form-row time-row">
-                                        <label htmlFor="hour">出生时</label>
-                                        <select 
-                                            id="hour" 
-                                            value={birthInfo.hour}
-                                            onChange={(e) => handleFieldChange('hour', parseInt(e.target.value))}
-                                        >
-                                            {Array.from({ length: 24 }, (_, i) => i).map(h => <option key={h} value={h}>{h}</option>)}
-                                        </select>
-                                        <label htmlFor="minute" className="minute-label">分</label>
-                                        <select 
-                                            id="minute" 
-                                            value={birthInfo.minute}
-                                            onChange={(e) => handleFieldChange('minute', parseInt(e.target.value))}
-                                        >
-                                            {Array.from({ length: 60 }, (_, i) => i).map(m => <option key={m} value={m}>{m}</option>)}
+                            <div className="wuxing-form-container">
+                                <form className="birth-form" onSubmit={(e) => { e.preventDefault(); handleFormSubmit(); }}>
+                                    {/* 年份选择 */}
+                                    <div className="birth-form-group">
+                                        <label>年份</label>
+                                        <select value={birthInfo.year} onChange={(e) => handleFieldChange('year', parseInt(e.target.value))}>
+                                            {generateYearOptions().map(y => <option key={y} value={y}>{y}年</option>)}
                                         </select>
                                     </div>
-                                )}
 
-                                <button className="btn primary-btn submit-btn" onClick={handleFormSubmit}>查看结果</button>
+                                    {/* 月份选择 */}
+                                    <div className="birth-form-group">
+                                        <label>月份</label>
+                                        <select value={birthInfo.month} onChange={(e) => handleFieldChange('month', parseInt(e.target.value))}>
+                                            {generateMonthOptions().map(m => <option key={m} value={m}>{m}月</option>)}
+                                        </select>
+                                    </div>
+
+                                    {/* 日期选择 */}
+                                    <div className="birth-form-group">
+                                        <label>日期</label>
+                                        <select value={birthInfo.day} onChange={(e) => handleFieldChange('day', parseInt(e.target.value))}>
+                                            {Array.from({length: getDaysInMonth(birthInfo.year, birthInfo.month)}, (_, i) => i + 1).map(d =>
+                                                <option key={d} value={d}>{d}日</option>
+                                            )}
+                                        </select>
+                                    </div>
+
+                                    {/* 时辰模式切换 */}
+                                    <div className="mode-switch">
+                                        <button type="button" className={ (timeMode === 'precise' ? 'active' : '') } onClick={() => setTimeMode('precise')}>精确时分</button>
+                                        <button type="button" className={ (timeMode === 'shichen' ? 'active' : '') } onClick={() => setTimeMode('shichen')}>十二时辰</button>
+                                    </div>
+
+                                    {timeMode === 'precise' ? (
+                                        <>
+                                            {/* 小时 */}
+                                            <div className="birth-form-group">
+                                                <label>时</label>
+                                                <select value={birthInfo.hour} onChange={(e) => handleFieldChange('hour', parseInt(e.target.value))}>
+                                                    {Array.from({length: 24}, (_, i) => i).map(h => <option key={h} value={h}>{h}时</option>)}
+                                                </select>
+                                            </div>
+                                            {/* 分钟 */}
+                                            <div className="birth-form-group">
+                                                <label>分</label>
+                                                <select value={birthInfo.minute} onChange={(e) => handleFieldChange('minute', parseInt(e.target.value))}>
+                                                    {[0, 15, 30, 45].map(m => <option key={m} value={m}>{m}分</option>)}
+                                                </select>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                        {/* 十二时辰选择 */}
+                                        <div className="birth-form-group full-width">
+                                            <label>时辰</label>
+                                            <select value={birthInfo.hour} onChange={(e) => {
+                                                const hour = parseInt(e.target.value);
+                                                handleFieldChange('hour', hour);
+                                                handleFieldChange('minute', 0);
+                                            }}>
+                                                <option value={23}>子时 (23:00-01:00)</option>
+                                                <option value={1}>丑时 (01:00-03:00)</option>
+                                                <option value={3}>寅时 (03:00-05:00)</option>
+                                                <option value={5}>卯时 (05:00-07:00)</option>
+                                                <option value={7}>辰时 (07:00-09:00)</option>
+                                                <option value={9}>巳时 (09:00-11:00)</option>
+                                                <option value={11}>午时 (11:00-13:00)</option>
+                                                <option value={13}>未时 (13:00-15:00)</option>
+                                                <option value={15}>申时 (15:00-17:00)</option>
+                                                <option value={17}>酉时 (17:00-19:00)</option>
+                                                <option value={19}>戌时 (19:00-21:00)</option>
+                                                <option value={21}>亥时 (21:00-23:00)</option>
+                                            </select>
+                                        </div>
+                                        </>
+                                    )}
+
+                                    {/* 性别选择 */}
+                                    <div className="birth-form-group">
+                                        <div className="gender-group">
+                                            <button
+                                                type="button"
+                                                className={"gender-btn " + (birthInfo.gender === 'male' ? 'selected' : '')}
+                                                onClick={() => handleFieldChange('gender', 'male')}
+                                            >男</button>
+                                            <button
+                                                type="button"
+                                                className={"gender-btn " + (birthInfo.gender === 'female' ? 'selected' : '')}
+                                                onClick={() => handleFieldChange('gender', 'female')}
+                                            >女</button>
+                                        </div>
+                                    </div>
+
+                                    <div className="navigation navigation-full-width">
+                                        <Link className="btn secondary-btn" to="/">返回主页</Link>
+                                        <button type="submit" className="btn primary-btn">开始测算</button>
+                                    </div>
+                                </form>
                             </div>
                         </>
                     ) : (
@@ -225,17 +247,17 @@ export default function TestPage({ testId }) {
                                     const label = test.typeLabels[type];
 
                                     return (
-                                        <article className={`type-card ${type}`} key={type}>
+                                        <article className={"type-card " + type} key={type}>
                                             <span className="type-marker">{label.slice(0, 1)}</span>
                                             <h3>{label}</h3>
-                                            <p>{profile?.tagline || "你的财富人格关键维度"}</p>
+                                            <p>{profile?.tagline || "你的财富人格关键维度"} </p>
                                         </article>
                                     );
                                 })}
                             </div>
                             <p className="note">约 {test.duration}，共 {test.questionCount} 题。请选择最接近当下真实状态的选项。</p>
-                            <div className="progress-bar"><div className="progress-fill" style={{ width: `${progress}%` }}></div></div>
-                            <p className="progress-text">第 <span>{currentQuestionIndex + 1}</span>/{test.questions.length} 题</p>
+                            <div className="progress-bar"><div className="progress-fill" style={{ width: progress + "%" }}></div></div>
+                            <p className="progress-text">第 <span>{currentQuestionIndex + 1}</span>/{questions.length} 题</p>
                             <div className="question-slide">
                                 <QuestionCard
                                     question={question}
@@ -261,7 +283,7 @@ export default function TestPage({ testId }) {
                         <ResultView test={test} scores={scores} onRestart={restart} />
                     )
                 )}
-             </section>
+            </section>
         </main>
     );
 }
