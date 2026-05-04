@@ -64,12 +64,13 @@ export default function TestPage({ testId }) {
                         <div className="test-intro-list" aria-label="PDP五种行为风格">
                             {test.typeOrder.map((type) => {
                                 const profile = test.profiles[type];
+                                const label = test.typeLabels[type];
 
                                 return (
                                     <article className={`type-card ${type}`} key={type}>
-                                        <span className="type-marker">{test.typeLabels[type].slice(0, 1)}</span>
-                                        <h3>{test.typeLabels[type]}</h3>
-                                        <p>{profile.tagline}</p>
+                                        <span className="type-marker">{label.slice(0, 1)}</span>
+                                        <h3>{label}</h3>
+                                        <p>{profile?.tagline || "你的财富人格关键维度"}</p>
                                     </article>
                                 );
                             })}
