@@ -23,11 +23,11 @@ export default function TestCard({ test }) {
                     <span key={tag}>{tag}</span>
                 ))}
             </div>
-            {test.path && (
-                <Link className={`btn ${isLive ? "primary-btn" : "secondary-btn"} card-action`} to={test.path}>
-                    {isLive ? "进入测试" : "查看说明"}
-                </Link>
-            )}
+                 {test.path && (
+                     <Link className={`btn ${isLive ? "primary-btn" : "secondary-btn"} card-action`} to={test.path}>
+                         {isLive ? "进入测试" : "查看说明"}
+                     </Link>
+                 )}
         </article>
     );
 }

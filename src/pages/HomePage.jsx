@@ -1,7 +1,30 @@
+import { useState } from "react";
 import TestCard from "../components/TestCard.jsx";
+import DailyFortuneHomeCard from "../components/DailyFortuneHomeCard.jsx";
 import { tests } from "../data/tests.js";
+import {
+  getDailyFortuneHomeSummary,
+  getDailyFortunePreview,
+  loadDailyFortuneProfile,
+  saveDailyFortuneProfile
+} from "../data/dailyFortune.js";
 
 export default function HomePage() {
+    const [profile, setProfile] = useState(() => loadDailyFortuneProfile());
+    const [isEditingDaily, setIsEditingDaily] = useState(() => !loadDailyFortuneProfile());
+    const previewItems = getDailyFortunePreview(profile);
+    const homeSummary = getDailyFortuneHomeSummary(profile);
+
+    function handleDailyFortuneSave(nextProfile) {
+      saveDailyFortuneProfile(nextProfile);
+      setProfile(nextProfile);
+      setIsEditingDaily(false);
+    }
+
+    function handleDailyFortuneEdit() {
+      setIsEditingDaily(true);
+    }
+
     return (
         <main className="container home-shell">
             <section className="landing-hero">
@@ -33,9 +56,21 @@ export default function HomePage() {
                 </aside>
             </section>
 
-            <section className="section-heading" aria-label="测试目录说明">
-                <p className="eyebrow">Available Assessments</p>
-                <h2>从一个主题开始观察自己</h2>
+            <section className="home-feature-section" aria-label="每日运势模块">
+                <DailyFortuneHomeCard
+                  profile={profile}
+                  isEditing={isEditingDaily}
+                  previewItems={previewItems}
+                  homeSummary={homeSummary}
+                  onStartEdit={handleDailyFortuneEdit}
+                  onSubmit={handleDailyFortuneSave}
+                />
+            </section>
+
+            <section className="section-heading test-section-heading" aria-label="测试模块">
+                <p className="eyebrow">Assessments</p>
+                <h2>测试</h2>
+                <p className="lead">从不同主题开始观察自己</p>
             </section>
 
             <section className="test-grid" aria-label="测试列表">

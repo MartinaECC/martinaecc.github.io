@@ -17,12 +17,10 @@ export default function TestPage({ testId }) {
         year: new Date().getFullYear() - 20,
         month: 1,
         day: 1,
-        hour: 12,
+        hour: 11,
         minute: 0,
         gender: null
     });
-    const [timeMode, setTimeMode] = useState('precise');
-
     if (!test) return <Navigate to="/" replace />;
 
     const question = questions[currentQuestionIndex] || null;
@@ -116,7 +114,7 @@ export default function TestPage({ testId }) {
             year: new Date().getFullYear() - 20,
             month: 1,
             day: 1,
-            hour: 12,
+            hour: 11,
             minute: 0,
             gender: null
         });
@@ -163,55 +161,28 @@ export default function TestPage({ testId }) {
                                         </select>
                                     </div>
 
-                                    {/* 时辰模式切换 */}
-                                    <div className="mode-switch">
-                                        <button type="button" className={ (timeMode === 'precise' ? 'active' : '') } onClick={() => setTimeMode('precise')}>精确时分</button>
-                                        <button type="button" className={ (timeMode === 'shichen' ? 'active' : '') } onClick={() => setTimeMode('shichen')}>十二时辰</button>
+                                    {/* 时辰选择 */}
+                                    <div className="birth-form-group full-width">
+                                        <label>时辰</label>
+                                        <select value={birthInfo.hour} onChange={(e) => {
+                                            const hour = parseInt(e.target.value);
+                                            handleFieldChange('hour', hour);
+                                            handleFieldChange('minute', 0);
+                                        }}>
+                                            <option value={23}>子时 (23:00-01:00)</option>
+                                            <option value={1}>丑时 (01:00-03:00)</option>
+                                            <option value={3}>寅时 (03:00-05:00)</option>
+                                            <option value={5}>卯时 (05:00-07:00)</option>
+                                            <option value={7}>辰时 (07:00-09:00)</option>
+                                            <option value={9}>巳时 (09:00-11:00)</option>
+                                            <option value={11}>午时 (11:00-13:00)</option>
+                                            <option value={13}>未时 (13:00-15:00)</option>
+                                            <option value={15}>申时 (15:00-17:00)</option>
+                                            <option value={17}>酉时 (17:00-19:00)</option>
+                                            <option value={19}>戌时 (19:00-21:00)</option>
+                                            <option value={21}>亥时 (21:00-23:00)</option>
+                                        </select>
                                     </div>
-
-                                    {timeMode === 'precise' ? (
-                                        <>
-                                            {/* 小时 */}
-                                            <div className="birth-form-group">
-                                                <label>时</label>
-                                                <select value={birthInfo.hour} onChange={(e) => handleFieldChange('hour', parseInt(e.target.value))}>
-                                                    {Array.from({length: 24}, (_, i) => i).map(h => <option key={h} value={h}>{h}时</option>)}
-                                                </select>
-                                            </div>
-                                            {/* 分钟 */}
-                                            <div className="birth-form-group">
-                                                <label>分</label>
-                                                <select value={birthInfo.minute} onChange={(e) => handleFieldChange('minute', parseInt(e.target.value))}>
-                                                    {[0, 15, 30, 45].map(m => <option key={m} value={m}>{m}分</option>)}
-                                                </select>
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <>
-                                        {/* 十二时辰选择 */}
-                                        <div className="birth-form-group full-width">
-                                            <label>时辰</label>
-                                            <select value={birthInfo.hour} onChange={(e) => {
-                                                const hour = parseInt(e.target.value);
-                                                handleFieldChange('hour', hour);
-                                                handleFieldChange('minute', 0);
-                                            }}>
-                                                <option value={23}>子时 (23:00-01:00)</option>
-                                                <option value={1}>丑时 (01:00-03:00)</option>
-                                                <option value={3}>寅时 (03:00-05:00)</option>
-                                                <option value={5}>卯时 (05:00-07:00)</option>
-                                                <option value={7}>辰时 (07:00-09:00)</option>
-                                                <option value={9}>巳时 (09:00-11:00)</option>
-                                                <option value={11}>午时 (11:00-13:00)</option>
-                                                <option value={13}>未时 (13:00-15:00)</option>
-                                                <option value={15}>申时 (15:00-17:00)</option>
-                                                <option value={17}>酉时 (17:00-19:00)</option>
-                                                <option value={19}>戌时 (19:00-21:00)</option>
-                                                <option value={21}>亥时 (21:00-23:00)</option>
-                                            </select>
-                                        </div>
-                                        </>
-                                    )}
 
                                     {/* 性别选择 */}
                                     <div className="birth-form-group">
