@@ -63,9 +63,6 @@ export default function TestPage({ testId }) {
         <main className="container">
             <section className="page active">
                 <Link className="back-link" to="/">← 返回测试主页</Link>
-                <div className="test-page-logo-container">
-                    <img src="/images/logo.png" alt="优测小宇宙" className="test-page-logo" />
-                </div>
                 {!scores ? (
                     <>
                         <p className="eyebrow">{test.eyebrow}</p>

@@ -698,23 +698,6 @@ p {
     }
 }
 
-.site-logo {
-    display: block;
-    max-width: 280px;
-    margin: 0 auto 20px;
-    height: auto;
-}
-
-.test-page-logo-container {
-    text-align: center;
-    margin-bottom: 16px;
-}
-
-.test-page-logo {
-    max-height: 48px;
-    width: auto;
-}
-
 .option input {
     width: 18px;
     height: 18px;
