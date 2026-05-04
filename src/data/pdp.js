@@ -382,7 +382,7 @@ export function calculateScores(answers) {
 
 export const pdpTest = {
     id: "pdp",
-    title: "PDP性格测试",
+    title: "PDP领导力性格测试",
     eyebrow: "PDP Personality Test",
     description: "通过 30 道题观察你在目标推进、社交表达、稳定协作、理性分析与情境适应中的行为倾向。",
     duration: "5-8分钟",

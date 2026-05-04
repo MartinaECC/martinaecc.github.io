@@ -1,5 +1,5 @@
 const mbtiTestData = {
-  title: "MBTI十六型人格测试",
+  title: "MBTI十六型人格",
   description: "权威的 93 题 MBTI 人格测试，帮助你了解自己的行为偏好、思维方式和人际互动模式",
   questions: [
     {
@@ -938,7 +938,7 @@ export const typeLabels = {
 
 export const mbtiTest = {
   id: "mbti",
-  title: "MBTI十六型人格测试",
+  title: "MBTI十六型人格",
   eyebrow: "MBTI Personality Test",
   description: "93 题标准版本，从四个维度解读你的人格类型和行为偏好，了解自己的思维方式和人际互动模式。",
   duration: "15-20分钟",

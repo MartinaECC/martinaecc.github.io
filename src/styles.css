@@ -126,6 +126,11 @@ h1 {
     letter-spacing: -0.045em;
 }
 
+.page h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.15;
+}
+
 p {
     text-wrap: pretty;
 }
@@ -141,7 +146,7 @@ p {
 
 .lead {
     max-width: 700px;
-    margin: 0 0 18px;
+    margin: 0 0 14px;
     color: var(--muted);
     font-size: clamp(1.05rem, 2vw, 1.25rem);
 }
@@ -159,6 +164,15 @@ p {
     border-radius: 999px;
     font-size: 0.88rem;
     font-weight: 700;
+}
+
+.small-note {
+    font-size: 0.78rem;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0 0 14px;
 }
 
 .back-link {
@@ -184,10 +198,11 @@ p {
     align-items: center;
     min-height: 350px;
     margin-bottom: 24px;
+    padding-inline: clamp(28px, 4vw, 38px);
 }
 
 .landing-copy h1 {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .hero-illustration {
@@ -352,6 +367,20 @@ p {
     margin: 0;
     color: var(--muted);
     font-size: 0.95rem;
+}
+
+.hero-motto {
+    margin: 0 0 14px;
+    color: var(--primary-dark);
+    font-family: var(--font-serif);
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    padding: 9px 12px;
+    background: rgba(127, 166, 144, 0.13);
+    border: 1px solid rgba(127, 166, 144, 0.18);
+    border-radius: 999px;
 }
 
 .section-heading {
@@ -592,6 +621,8 @@ p {
     padding: 12px 20px;
     font-size: 0.96rem;
     font-weight: 800;
+    text-decoration: none;
+    text-align: center;
     cursor: pointer;
     transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
 }
@@ -610,6 +641,62 @@ p {
     color: #fffefb;
     background: var(--primary-dark);
     box-shadow: var(--shadow-small);
+}
+
+.primary-btn::after {
+    content: none;
+}
+
+.daily-fortune-cta {
+    position: relative;
+    overflow: hidden;
+    color: #fffefb;
+    background: var(--primary-dark);
+    box-shadow: var(--shadow-small);
+}
+
+.daily-fortune-cta-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--primary-dark);
+    animation: fortuneBgBreathe 2.8s ease-in-out infinite;
+}
+
+.daily-fortune-cta-bg::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 55%;
+    height: 200%;
+    background: linear-gradient(105deg, transparent 24%, rgba(255,255,255,0.30) 50%, transparent 76%);
+    transform: skewX(-22deg);
+    animation: fortuneBgSweep 2s linear infinite;
+}
+
+.daily-fortune-cta-label {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes fortuneBgBreathe {
+    0%, 100% {
+        scale: 0.97;
+        box-shadow: 0 0 0 0 rgba(120, 161, 143, 0.35);
+    }
+    50% {
+        scale: 1.03;
+        box-shadow: 0 0 24px 4px rgba(120, 161, 143, 0.35);
+    }
+}
+
+@keyframes fortuneBgSweep {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 125%;
+    }
 }
 
 .primary-btn:hover:not(:disabled),
@@ -1011,6 +1098,15 @@ p {
 
     .landing-hero {
         gap: 18px;
+        margin-bottom: 16px;
+        position: relative;
+        overflow: hidden;
+        padding: 0 20px;
+    }
+
+    .landing-copy {
+        position: relative;
+        z-index: 1;
     }
 
     .page {
@@ -1020,7 +1116,30 @@ p {
     }
 
     .hero-illustration {
+        position: absolute;
+        inset: 0;
+        min-height: 0;
+        opacity: 0.50;
+        z-index: 0;
+        transform: scale(0.8);
+        transform-origin: center center;
+    }
+
+    .hero-illustration::before {
+        inset: -10px;
+        border-radius: 40% 50% 45% 55% / 52% 48% 50% 50%;
+        background:
+            linear-gradient(180deg, rgba(255, 253, 248, 0.80), rgba(255, 248, 235, 0.65)),
+            radial-gradient(circle at 50% 18%, rgba(180, 210, 225, 0.38) 12%, transparent 38%),
+            radial-gradient(circle at 50% 78%, rgba(245, 225, 160, 0.32) 10%, transparent 35%);
+    }
+
+    .reflection-card {
         display: none;
+    }
+
+    .orbit-map {
+        width: min(70%, 240px);
     }
 
     .section-heading {
@@ -1189,7 +1308,7 @@ p {
 
 /* Daily Fortune Homepage Styles */
 .home-module-fortune {
-  margin-top: 54px;
+  margin-top: 24px;
 }
 
 .home-module-assessments {
@@ -1265,6 +1384,36 @@ p {
     rgba(255, 255, 255, 0.24);
   border: 1px solid rgba(223, 207, 184, 0.8);
   overflow: hidden;
+}
+
+.daily-home-edit-action {
+  display: none;
+}
+
+.daily-home-edit-action button {
+  color: var(--primary-dark);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.96rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.daily-home-edit-action button:hover {
+  transform: translateY(-1px);
+  background: rgba(127, 166, 144, 0.06);
+}
+
+.daily-home-edit-action .edit-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.daily-home-edit-action button:hover .edit-arrow {
+  transform: translateX(3px);
 }
 
 .fortune-preview-chart {
@@ -1357,6 +1506,10 @@ p {
     padding: 20px;
   }
 
+  .home-module-fortune {
+    margin-top: 8px;
+  }
+
   .birth-form-compact {
     grid-template-columns: 1fr;
   }
@@ -1383,6 +1536,30 @@ p {
 
   .note {
     border-radius: var(--radius-sm);
+  }
+
+  .daily-home-edit-action {
+    display: flex;
+    justify-content: center;
+    margin-top: -16px;
+  }
+
+  .daily-home-edit-action button {
+    border: none;
+    background: none;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .daily-home-edit-action button:hover {
+    transform: none;
+    background: none;
+  }
+
+  .daily-home-edit-desktop {
+    display: none;
   }
 }
 

@@ -1,5 +1,5 @@
 const bftiTestData = {
-  title: "BFTI暴富TI测试",
+  title: "BFTI暴富性格测试",
   description: "一个关于财富动机、风险偏好与行动模式的轻量探索测试",
   questions: [
     {
@@ -501,7 +501,7 @@ export const typeLabels = {
 
 export const bftiTest = {
   id: "bfti",
-  title: "BFTI暴富TI测试",
+  title: "BFTI暴富性格测试",
   eyebrow: "BFTI Fortune Test",
   description: "一个关于财富动机、风险偏好与行动模式的轻量探索测试，看看你是哪种暴富体质？",
   duration: "5-8分钟",

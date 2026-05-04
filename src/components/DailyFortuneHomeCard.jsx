@@ -30,11 +30,12 @@ export default function DailyFortuneHomeCard({
               {homeSummary}
             </p>
             <div className="daily-home-actions">
-              <Link className="btn primary-btn" to="/daily-fortune">
-                查看今日运势
+              <Link className="btn daily-fortune-cta" to="/daily-fortune">
+                <span className="daily-fortune-cta-bg"></span>
+                <span className="daily-fortune-cta-label">查看今日运势</span>
               </Link>
-              <button className="btn secondary-btn" type="button" onClick={onStartEdit}>
-                修改资料
+              <button className="btn secondary-btn daily-home-edit-desktop" type="button" onClick={onStartEdit}>
+                修改资料 <span className="edit-arrow">→</span>
               </button>
             </div>
           </>
@@ -49,6 +50,11 @@ export default function DailyFortuneHomeCard({
       <aside className="daily-home-visual" aria-label="五大运势预览">
         <DailyFortunePreviewChart items={previewItems} />
       </aside>
+      {profile && (
+        <div className="daily-home-edit-action">
+          <button type="button" onClick={onStartEdit}>修改资料 <span className="edit-arrow">→</span></button>
+        </div>
+      )}
     </div>
   );
 }
