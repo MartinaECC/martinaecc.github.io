@@ -1357,8 +1357,7 @@ p {
     padding: 20px;
   }
 
-  .birth-form-compact,
-  .fortune-preview-chart {
+  .birth-form-compact {
     grid-template-columns: 1fr;
   }
 
@@ -1378,17 +1377,12 @@ p {
     min-height: auto;
   }
 
-  .fortune-preview-item {
-    align-items: stretch;
-  }
-
   .fortune-preview-bar-wrap {
     height: 80px;
   }
 
-  .fortune-preview-bar {
-    max-width: none;
-    width: 100%;
+  .note {
+    border-radius: var(--radius-sm);
   }
 }
 

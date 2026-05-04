@@ -213,7 +213,7 @@ export default function TestPage({ testId }) {
                             <h1>{test.title}</h1>
                             <p className="lead">{test.description}</p>
                             <div className="decor-divider"><span></span></div>
-                            <p className="note">💡 答题小贴士：凭第一感觉选择，不要思考太久。结果没有对错，只是帮你更了解自己。约 {test.duration}，共 {test.questionCount} 题。请选择最接近当下真实状态的选项。</p>
+                            <p className="note">💡 小贴士：约 {test.duration}，共 {test.questionCount} 题，请选择最接近当下真实状态的选项。结果没有对错，只是帮你更了解自己。</p>
                             <div className="progress-bar"><div className="progress-fill" style={{ width: progress + "%" }}></div></div>
                             <p className="progress-text">第 <span>{currentQuestionIndex + 1}</span>/{questions.length} 题</p>
                             <div className="question-slide">
