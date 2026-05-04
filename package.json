@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
+    "chart.js": "latest",
+    "lunar-javascript": "^1.7.7",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "latest",
-    "chart.js": "latest"
-  },
-  "devDependencies": {}
+    "vite": "latest"
+  }
 }
