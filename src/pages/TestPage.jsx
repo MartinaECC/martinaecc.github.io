@@ -23,6 +23,13 @@ export default function TestPage({ testId }) {
             nextAnswers[currentQuestionIndex] = type;
             return nextAnswers;
         });
+
+        // 自动跳转到下一题（最后一题不自动跳转）
+        if (!isLastQuestion) {
+            setTimeout(() => {
+                setCurrentQuestionIndex((index) => Math.min(index + 1, test.questions.length - 1));
+            }, 180);
+        }
     }
 
     function goNext() {
@@ -78,12 +85,14 @@ export default function TestPage({ testId }) {
                         <p className="note">约 {test.duration}，共 {test.questionCount} 题。请选择最接近当下真实状态的选项。</p>
                         <div className="progress-bar"><div className="progress-fill" style={{ width: `${progress}%` }}></div></div>
                         <p className="progress-text">第 <span>{currentQuestionIndex + 1}</span>/{test.questions.length} 题</p>
-                        <QuestionCard
-                            question={question}
-                            questionIndex={currentQuestionIndex}
-                            selectedType={selectedType}
-                            onSelect={selectAnswer}
-                        />
+                        <div className="question-slide">
+                            <QuestionCard
+                                question={question}
+                                questionIndex={currentQuestionIndex}
+                                selectedType={selectedType}
+                                onSelect={selectAnswer}
+                            />
+                        </div>
                         <div className="navigation">
                             <button className="btn secondary-btn" disabled={currentQuestionIndex === 0} onClick={() => setCurrentQuestionIndex((index) => index - 1)}>上一题</button>
                             {!isLastQuestion ? (
