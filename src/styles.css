@@ -3,18 +3,22 @@
 }
 
 :root {
-    --bg: #faf7f2;
+    --bg: #fbf7f0;
     --surface: #fffdf8;
-    --surface-muted: #f4eee6;
-    --text: #2f2a25;
+    --surface-muted: #f3eadf;
+    --text: #2d2925;
     --muted: #756d64;
     --subtle: #9a9085;
     --line: #e7ded2;
     --line-strong: #d8cbbd;
-    --primary: #6f8372;
-    --primary-dark: #4f6453;
-    --accent: #b67855;
-    --accent-soft: #ead7c8;
+    --primary: #657f72;
+    --primary-dark: #435f53;
+    --accent: #c17755;
+    --accent-soft: #efd8c8;
+    --gold: #d7ad61;
+    --blue: #7190a0;
+    --lavender: #8d829d;
+    --rose: #ca8b76;
     --success: #6f8372;
     --warning: #a97a35;
     --shadow-soft: 0 18px 48px rgba(64, 48, 33, 0.08);
@@ -22,8 +26,8 @@
     --radius-lg: 28px;
     --radius-md: 18px;
     --radius-sm: 12px;
-    --font-serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
-    --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --font-serif: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    --font-sans: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
     --tiger: #a65f45;
     --peacock: #607b8b;
     --koala: #75836d;
@@ -42,8 +46,9 @@ body {
     background:
         linear-gradient(90deg, rgba(231, 222, 210, 0.34) 1px, transparent 1px),
         linear-gradient(180deg, rgba(231, 222, 210, 0.24) 1px, transparent 1px),
-        radial-gradient(circle at 16% 8%, rgba(182, 120, 85, 0.11), transparent 28%),
-        radial-gradient(circle at 82% 10%, rgba(111, 131, 114, 0.10), transparent 26%),
+        radial-gradient(circle at 14% 9%, rgba(193, 119, 85, 0.15), transparent 25%),
+        radial-gradient(circle at 78% 8%, rgba(113, 144, 160, 0.14), transparent 24%),
+        radial-gradient(circle at 54% 0%, rgba(215, 173, 97, 0.10), transparent 22%),
         var(--bg);
     background-size: 48px 48px, 48px 48px, auto, auto, auto;
     font-family: var(--font-sans);
@@ -64,11 +69,11 @@ label {
 .container {
     width: min(1120px, calc(100% - 40px));
     margin: 0 auto;
-    padding: 48px 0;
+    padding: 34px 0;
 }
 
 .home-shell {
-    padding-top: 54px;
+    padding-top: 28px;
 }
 
 .page {
@@ -109,7 +114,7 @@ h1 {
     max-width: 860px;
     margin-bottom: 18px;
     font-family: var(--font-serif);
-    font-size: clamp(2.8rem, 8vw, 6.5rem);
+    font-size: clamp(2.7rem, 7vw, 5.65rem);
     font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.045em;
@@ -120,7 +125,7 @@ p {
 }
 
 .eyebrow {
-    margin: 0 0 14px;
+    margin: 0 0 10px;
     color: var(--primary-dark);
     font-size: 0.8rem;
     font-weight: 800;
@@ -130,7 +135,7 @@ p {
 
 .lead {
     max-width: 700px;
-    margin: 0 0 28px;
+    margin: 0 0 18px;
     color: var(--muted);
     font-size: clamp(1.05rem, 2vw, 1.25rem);
 }
@@ -168,11 +173,11 @@ p {
 
 .landing-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.82fr);
-    gap: clamp(32px, 6vw, 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+    gap: clamp(28px, 5vw, 58px);
     align-items: center;
-    min-height: 540px;
-    margin-bottom: 56px;
+    min-height: 350px;
+    margin-bottom: 24px;
 }
 
 .landing-copy h1 {
@@ -181,17 +186,18 @@ p {
 
 .hero-illustration {
     position: relative;
-    min-height: 500px;
+    min-height: 340px;
     isolation: isolate;
 }
 
 .hero-illustration::before {
     content: "";
     position: absolute;
-    inset: 40px 20px 76px 18px;
+    inset: 18px 16px 52px 24px;
     background:
         linear-gradient(135deg, rgba(255, 253, 248, 0.84), rgba(244, 238, 230, 0.78)),
-        radial-gradient(circle at 70% 28%, rgba(111, 131, 114, 0.12), transparent 34%);
+        radial-gradient(circle at 72% 24%, rgba(113, 144, 160, 0.16), transparent 34%),
+        radial-gradient(circle at 28% 74%, rgba(215, 173, 97, 0.16), transparent 30%);
     border: 1px solid var(--line);
     border-radius: 42% 58% 46% 54% / 56% 45% 55% 44%;
     box-shadow: var(--shadow-soft);
@@ -201,24 +207,24 @@ p {
 .hero-illustration::after {
     content: "";
     position: absolute;
-    inset: 88px 76px 126px 84px;
-    border: 1px solid rgba(111, 131, 114, 0.18);
+    inset: 54px 72px 98px 86px;
+    border: 1px solid rgba(113, 144, 160, 0.22);
     border-radius: 50%;
     z-index: -1;
 }
 
 .orbit-map {
     position: absolute;
-    top: 54px;
-    right: 26px;
-    width: min(88%, 420px);
+    top: 22px;
+    right: 20px;
+    width: min(80%, 300px);
     aspect-ratio: 1;
 }
 
 .orbit {
     position: absolute;
     inset: 50%;
-    border: 1px solid rgba(111, 131, 114, 0.24);
+    border: 1px solid rgba(101, 127, 114, 0.28);
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
@@ -231,14 +237,14 @@ p {
 .orbit-two {
     width: 58%;
     height: 58%;
-    border-color: rgba(182, 120, 85, 0.22);
+    border-color: rgba(193, 119, 85, 0.28);
 }
 
 .orbit-three {
     width: 35%;
     height: 35%;
     border-style: dashed;
-    border-color: rgba(117, 108, 134, 0.24);
+    border-color: rgba(141, 130, 157, 0.28);
 }
 
 .core-dot {
@@ -267,27 +273,27 @@ p {
 .signal-a {
     left: 19%;
     top: 28%;
-    background: #f1dfd2;
+    background: var(--accent-soft);
 }
 
 .signal-b {
     right: 18%;
     top: 38%;
-    background: #dfe7df;
+    background: #dce8e0;
 }
 
 .signal-c {
     left: 42%;
     bottom: 14%;
-    background: #e6dfec;
+    background: #e7e0ee;
 }
 
 .reflection-card {
     position: absolute;
     left: 18px;
-    bottom: 112px;
-    width: 210px;
-    padding: 22px;
+    bottom: 78px;
+    width: 178px;
+    padding: 18px;
     background: rgba(255, 253, 248, 0.88);
     border: 1px solid var(--line);
     border-radius: 24px;
@@ -319,9 +325,9 @@ p {
 .hero-aside {
     position: absolute;
     right: 0;
-    bottom: 28px;
-    width: min(320px, 82%);
-    padding: 24px;
+    bottom: 10px;
+    width: min(300px, 82%);
+    padding: 20px;
     background: rgba(255, 253, 248, 0.78);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
@@ -347,7 +353,7 @@ p {
     align-items: end;
     justify-content: space-between;
     gap: 24px;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
 }
 
 .section-heading h2 {
@@ -365,10 +371,10 @@ p {
 
 .test-card {
     position: relative;
-    min-height: 360px;
+    min-height: 284px;
     display: flex;
     flex-direction: column;
-    padding: 26px;
+    padding: 22px;
     background: rgba(255, 253, 248, 0.90);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
@@ -380,11 +386,11 @@ p {
 .test-card::before {
     content: "";
     position: absolute;
-    right: -48px;
-    bottom: -58px;
-    width: 180px;
-    height: 180px;
-    border: 1px solid rgba(111, 131, 114, 0.14);
+    right: -44px;
+    bottom: -62px;
+    width: 168px;
+    height: 168px;
+    border: 1px solid rgba(113, 144, 160, 0.18);
     border-radius: 50%;
 }
 
@@ -395,15 +401,15 @@ p {
     bottom: 42px;
     width: 48px;
     height: 48px;
-    background: rgba(111, 131, 114, 0.08);
+    background: rgba(215, 173, 97, 0.14);
     border-radius: 50%;
 }
 
 .card-watermark {
     position: absolute;
     right: 20px;
-    top: 86px;
-    color: rgba(47, 42, 37, 0.045);
+    top: 74px;
+    color: rgba(47, 42, 37, 0.055);
     font-family: var(--font-serif);
     font-size: clamp(4.2rem, 8vw, 6.8rem);
     font-weight: 700;
@@ -422,7 +428,7 @@ p {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
 }
 
 .test-icon {
@@ -432,7 +438,7 @@ p {
     height: 42px;
     padding: 0 12px;
     color: var(--primary-dark);
-    background: var(--surface-muted);
+    background: linear-gradient(135deg, var(--surface-muted), rgba(215, 173, 97, 0.16));
     border: 1px solid var(--line);
     border-radius: 999px;
     font-size: 0.84rem;
@@ -460,7 +466,7 @@ p {
 .test-card h2 {
     margin-bottom: 12px;
     font-family: var(--font-serif);
-    font-size: 1.55rem;
+    font-size: 1.45rem;
     line-height: 1.22;
 }
 
@@ -474,7 +480,22 @@ p {
     flex-wrap: wrap;
     gap: 8px;
     margin-top: auto;
-    margin-bottom: 22px;
+    margin-bottom: 18px;
+}
+
+.pdp-card .test-icon,
+.pdp-card::after {
+    background: rgba(101, 127, 114, 0.14);
+}
+
+.bfti-card .test-icon,
+.bfti-card::after {
+    background: rgba(215, 173, 97, 0.18);
+}
+
+.placeholder-card .test-icon,
+.placeholder-card::after {
+    background: rgba(141, 130, 157, 0.14);
 }
 
 .tag-row span {
@@ -800,10 +821,11 @@ p {
 
     .landing-hero {
         min-height: auto;
+        margin-bottom: 30px;
     }
 
     .hero-illustration {
-        min-height: 460px;
+        min-height: 360px;
     }
 
     .test-grid {
@@ -827,7 +849,15 @@ p {
     }
 
     .home-shell {
-        padding-top: 36px;
+        padding-top: 24px;
+    }
+
+    h1 {
+        font-size: clamp(2.55rem, 15vw, 4.2rem);
+    }
+
+    .landing-hero {
+        gap: 18px;
     }
 
     .page {
@@ -837,7 +867,7 @@ p {
     }
 
     .hero-illustration {
-        min-height: 400px;
+        min-height: 330px;
     }
 
     .orbit-map {
@@ -847,16 +877,21 @@ p {
 
     .reflection-card {
         left: 4px;
-        bottom: 96px;
+        bottom: 78px;
         width: 170px;
     }
 
     .hero-aside {
         width: 88%;
+        padding: 16px;
     }
 
     .section-heading {
         display: block;
+    }
+
+    .test-card {
+        min-height: 260px;
     }
 
     .test-intro-list,
