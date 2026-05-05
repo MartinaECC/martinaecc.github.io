@@ -30,7 +30,7 @@ export default function DailyFortunePage() {
   return (
     <main className="container">
       <section className="page active daily-fortune-page">
-        <Link className="back-link" to="/">← 返回测试主页</Link>
+        <Link className="back-link" to="/assessments">← 返回测试主页</Link>
         <p className="eyebrow">Daily Fortune</p>
         <h1>每日运势</h1>
         <p className="lead">结合星座与八字五行，为你生成每天更新的五类运势参考。</p>

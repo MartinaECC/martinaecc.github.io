@@ -61,7 +61,7 @@ export default function DailyFortuneResult({ result, onEdit, onClear }) {
       <div className="navigation">
         <button className="btn secondary-btn" onClick={onEdit}>修改生日信息</button>
         <button className="btn secondary-btn" onClick={onClear}>清除本地资料</button>
-        <Link className="btn primary-btn" to="/">返回主页</Link>
+        <Link className="btn primary-btn" to="/assessments">返回主页</Link>
       </div>
 
       <p className="disclaimer">

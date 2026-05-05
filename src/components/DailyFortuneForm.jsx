@@ -127,7 +127,7 @@ export default function DailyFortuneForm({
 
         <div className="navigation navigation-full-width">
           {!hideBackLink ? (
-            <Link className="btn secondary-btn" to="/">返回主页</Link>
+            <Link className="btn secondary-btn" to="/assessments">返回主页</Link>
           ) : null}
           <button type="submit" className="btn primary-btn">{submitLabel}</button>
         </div>

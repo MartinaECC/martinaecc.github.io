@@ -21,7 +21,7 @@ export default function TestPage({ testId }) {
         minute: 0,
         gender: null
     });
-    if (!test) return <Navigate to="/" replace />;
+    if (!test) return <Navigate to="/assessments" replace />;
 
     const question = questions[currentQuestionIndex] || null;
     const selectedType = answers[currentQuestionIndex];
@@ -124,7 +124,7 @@ export default function TestPage({ testId }) {
     return (
         <main className="container">
             <section className="page active">
-                <Link className="back-link" to="/">← 返回测试主页</Link>
+                <Link className="back-link" to="/assessments">← 返回测试主页</Link>
                 {!scores ? (
                     test.hasForm ? (
                         <>
@@ -201,7 +201,7 @@ export default function TestPage({ testId }) {
                                     </div>
 
                                     <div className="navigation navigation-full-width">
-                                        <Link className="btn secondary-btn" to="/">返回主页</Link>
+                                        <Link className="btn secondary-btn" to="/assessments">返回主页</Link>
                                         <button type="submit" className="btn primary-btn">开始测算</button>
                                     </div>
                                 </form>
