@@ -9,7 +9,7 @@ import {
   loadDailyFortuneProfile,
   saveDailyFortuneProfile
 } from "../data/dailyFortune.js";
-import { AppShell } from "./AppPrototypePage.jsx";
+import AppShell from "../components/AppShell.jsx";
 
 export default function AssessmentsAppPage() {
   const [profile, setProfile] = useState(() => loadDailyFortuneProfile());

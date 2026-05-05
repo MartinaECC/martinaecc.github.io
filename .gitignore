@@ -12,6 +12,10 @@ node_modules/
 dist/
 .env
 .env.*
-.opencode
+.opencode/*
+!.opencode/skills/
+.opencode/skills/*
+!.opencode/skills/martinaecc-app-resolution/
+!.opencode/skills/martinaecc-app-resolution/SKILL.md
 AGENTS.md
 docs/

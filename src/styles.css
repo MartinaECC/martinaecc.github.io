@@ -3172,6 +3172,136 @@ p {
     margin-top: 12px;
 }
 
+.test-app-screen,
+.daily-fortune-app-screen {
+    background: #f4f7fd;
+}
+
+.test-app-page,
+.daily-fortune-app-page {
+    display: block;
+    min-height: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(226, 232, 244, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 14px 34px rgba(42, 56, 82, 0.08);
+}
+
+.test-app-page .back-link,
+.daily-fortune-app-page .back-link {
+    display: inline-flex;
+    margin-bottom: 16px;
+    padding: 7px 12px;
+    color: #5d50f3;
+    background: #f1f0ff;
+    border-radius: 999px;
+    font-size: 0.86rem;
+    text-decoration: none;
+}
+
+.test-app-page h1,
+.daily-fortune-app-page h1 {
+    font-size: clamp(2rem, 12vw, 3.05rem);
+    letter-spacing: -0.07em;
+}
+
+.test-app-page .lead,
+.daily-fortune-app-page .lead {
+    font-size: 1rem;
+}
+
+.test-app-page .note,
+.daily-fortune-app-page .note {
+    display: block;
+    border-radius: 16px;
+    line-height: 1.55;
+}
+
+.test-app-page .question-container {
+    padding: 16px 0 0;
+}
+
+.test-app-page .question-title {
+    font-size: 1.32rem;
+}
+
+.test-app-page .option {
+    padding: 14px;
+    border-radius: 16px;
+    background: #fbfcff;
+}
+
+.test-app-page .navigation,
+.daily-fortune-app-page .navigation {
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.test-app-page .btn,
+.daily-fortune-app-page .btn {
+    width: 100%;
+}
+
+.test-app-page .birth-form,
+.daily-fortune-app-page .birth-form {
+    grid-template-columns: 1fr;
+}
+
+.test-app-page .birth-form-group.full-width,
+.daily-fortune-app-page .birth-form-group.full-width,
+.test-app-page .navigation-full-width,
+.daily-fortune-app-page .navigation-full-width {
+    grid-column: auto;
+}
+
+.test-app-page .wuxing-form-container {
+    margin-top: 16px;
+}
+
+.test-app-page .result-layout {
+    grid-template-columns: 1fr;
+}
+
+.test-app-page .score-list,
+.test-app-page .description-grid,
+.test-app-page .test-intro-list {
+    grid-template-columns: 1fr;
+}
+
+.test-app-page .wuxing-overview-grid,
+.test-app-page .wuxing-score-list,
+.test-app-page .ganzhi-grid,
+.test-app-page .basic-info,
+.test-app-page .wuxing-hero-card,
+.test-app-page .wuxing-analysis-grid,
+.test-app-page .wuxing-guidance-grid,
+.test-app-page .wuxing-life-grid,
+.test-app-page .wuxing-support-banner,
+.test-app-page .wuxing-dayun-list,
+.test-app-page .wuxing-ranking-list {
+    grid-template-columns: 1fr;
+}
+
+.test-app-page .wuxing-score-report-list {
+    grid-template-columns: 1fr;
+}
+
+.daily-fortune-app-page .fortune-result-shell,
+.daily-fortune-app-page .daily-fortune-result,
+.daily-fortune-app-page .fortune-card {
+    max-width: 100%;
+}
+
+.daily-fortune-app-page .fortune-preview-chart {
+    min-height: auto;
+}
+
+.daily-fortune-app-page .fortune-result-grid,
+.daily-fortune-app-page .fortune-actions-grid {
+    grid-template-columns: 1fr;
+}
+
 .quick-entry, .hero-cta, .app-tab, .report-cta, .benefit-main-cta, .member-info-cta, .cash-button, .service-item, .icon-pill, .circle-action { transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease; }
 .quick-entry:active, .hero-cta:active, .app-tab:active, .report-cta:active, .benefit-main-cta:active, .member-info-cta:active, .cash-button:active, .service-item:active, .icon-pill:active, .circle-action:active { transform: scale(0.98); }
 

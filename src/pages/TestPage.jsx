@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import AppShell from "../components/AppShell.jsx";
 import QuestionCard from "../components/QuestionCard.jsx";
 import ResultView from "../components/ResultView.jsx";
 import WuxingResultView from "../components/WuxingResultView.jsx";
@@ -122,8 +123,8 @@ export default function TestPage({ testId }) {
     }
 
     return (
-        <main className="container">
-            <section className="page active">
+        <AppShell activeTab="home" screenClassName="test-app-screen">
+            <section className="page active test-app-page">
                 <Link className="back-link" to="/assessments">← 返回测试主页</Link>
                 {!scores ? (
                     test.hasForm ? (
@@ -242,6 +243,6 @@ export default function TestPage({ testId }) {
                     )
                 )}
             </section>
-        </main>
+        </AppShell>
     );
 }

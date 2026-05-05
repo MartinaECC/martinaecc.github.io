@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import AppShell from "../components/AppShell.jsx";
 
 const homeQuickEntries = [
   { label: "查风险", icon: "shield", to: "https://m.udataai.com/?udchl=UO8NQWCD&ut=8", external: true, badge: null },
@@ -61,35 +62,6 @@ const benefitCards = [
   { title: "券包天天领", count: "天天免费领", type: "daily", items: ["京东外卖", "美团外卖", "滴滴出行"] },
   { title: "车主福利免费领", count: "免费领", type: "carOwner", items: ["洗车券", "车保养"] }
 ];
-
-const bottomTabs = [
-  { key: "home", label: "首页", to: "/", icon: "home" },
-  { key: "reports", label: "报告", to: "/reports", icon: "report" },
-  { key: "benefits", label: "福利", to: "/benefits", icon: "gift" },
-  { key: "me", label: "我的", to: "/me", icon: "user" }
-];
-
-export function AppShell({ children, activeTab = "home", screenClassName = "" }) {
-  return (
-    <main className="app-prototype-page">
-      <div className="mobile-app-shell">
-        <section className={"app-screen " + screenClassName}>{children}</section>
-        <nav className="app-tabbar" aria-label="主导航">
-          {bottomTabs.map((tab) => (
-            <NavLink
-              key={tab.key}
-              to={tab.to}
-              className={({ isActive }) => "app-tab" + (isActive || activeTab === tab.key ? " active" : "")}
-            >
-              <span className={"app-tab-icon icon-" + tab.icon} aria-hidden="true"></span>
-              <span>{tab.label}</span>
-            </NavLink>
-          ))}
-        </nav>
-      </div>
-    </main>
-  );
-}
 
 export default function AppPrototypePage({ activeTab }) {
   return (

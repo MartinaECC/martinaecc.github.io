@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import AppShell from "../components/AppShell.jsx";
 import DailyFortuneForm from "../components/DailyFortuneForm.jsx";
 import DailyFortuneResult from "../components/DailyFortuneResult.jsx";
 import {
@@ -28,8 +29,8 @@ export default function DailyFortunePage() {
   }
 
   return (
-    <main className="container">
-      <section className="page active daily-fortune-page">
+    <AppShell activeTab="home" screenClassName="daily-fortune-app-screen">
+      <section className="page active daily-fortune-page daily-fortune-app-page">
         <Link className="back-link" to="/assessments">← 返回测试主页</Link>
         <p className="eyebrow">Daily Fortune</p>
         <h1>每日运势</h1>
@@ -46,6 +47,6 @@ export default function DailyFortunePage() {
           />
         )}
       </section>
-    </main>
+    </AppShell>
   );
 }
