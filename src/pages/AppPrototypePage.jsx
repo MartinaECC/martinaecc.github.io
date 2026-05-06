@@ -64,11 +64,14 @@ const benefitCards = [
 ];
 
 export default function AppPrototypePage({ activeTab }) {
+  const isBenefitsTab = activeTab === "benefits";
+
   return (
     <AppShell
       activeTab={activeTab}
-      screenClassName={activeTab === "benefits" ? "benefits-screen" : ""}
-      screenInnerClassName={activeTab === "benefits" ? "benefits-screen-inner" : ""}
+      screenClassName={isBenefitsTab ? "benefits-screen" : ""}
+      screenInnerClassName={isBenefitsTab ? "benefits-screen-inner" : ""}
+      footerOverlay={isBenefitsTab ? <BenefitsFloatingCard /> : null}
     >
       {renderTab(activeTab)}
     </AppShell>
@@ -246,18 +249,6 @@ function ReportsTab() {
 
 function BenefitsTab() {
   const [activeBenefit, setActiveBenefit] = useState("风险排查");
-  const [agreed, setAgreed] = useState(false);
-  const [paymentState, setPaymentState] = useState("idle");
-
-  function handleBuy() {
-    if (!agreed) {
-      setPaymentState("needAgreement");
-      window.setTimeout(() => setPaymentState("idle"), 900);
-      return;
-    }
-
-    setPaymentState("selected");
-  }
 
   return (
     <div className="app-tab-page app-benefits-tab">
@@ -274,7 +265,7 @@ function BenefitsTab() {
               <span>预计可享</span>
               <strong>7528元</strong>
             </div>
-            <button type="button" onClick={handleBuy}>开通领权益</button>
+            <button type="button">开通领权益</button>
           </div>
         </section>
 
@@ -295,26 +286,43 @@ function BenefitsTab() {
 
         <section className="benefit-list" aria-label="会员权益列表">
           {benefitCards.map((card) => (
-            <BenefitCard key={card.title} card={card} onClaim={handleBuy} />
+            <BenefitCard key={card.title} card={card} />
           ))}
         </section>
       </div>
-
-      <section className={"floating-price-card " + (paymentState === "needAgreement" ? "needs-agreement" : "") + (paymentState === "selected" ? " selected" : "")}>
-        <button className="floating-price-main" type="button" onClick={handleBuy}>
-          <span className="floating-price-left"><strong>¥69特价</strong><span>原价¥99</span></span>
-          <span className="floating-price-right">{paymentState === "selected" ? "已选择" : "开通包回本"}</span>
-        </button>
-        <button className="agreement-row" type="button" onClick={() => setAgreed((current) => !current)}>
-          <span className={"agreement-check" + (agreed ? " checked" : "")}></span>
-          <span>开通即同意 <a href="#">《会员服务协议》</a></span>
-        </button>
-      </section>
     </div>
   );
 }
 
-function BenefitCard({ card, onClaim }) {
+function BenefitsFloatingCard() {
+  const [agreed, setAgreed] = useState(false);
+  const [paymentState, setPaymentState] = useState("idle");
+
+  function handleBuy() {
+    if (!agreed) {
+      setPaymentState("needAgreement");
+      window.setTimeout(() => setPaymentState("idle"), 900);
+      return;
+    }
+
+    setPaymentState("selected");
+  }
+
+  return (
+    <section className={"floating-price-card " + (paymentState === "needAgreement" ? "needs-agreement" : "") + (paymentState === "selected" ? " selected" : "") }>
+      <button className="floating-price-main" type="button" onClick={handleBuy}>
+        <span className="floating-price-left"><strong>¥69特价</strong><span>原价¥99</span></span>
+        <span className="floating-price-right">{paymentState === "selected" ? "已选择" : "开通包回本"}</span>
+      </button>
+      <button className="agreement-row" type="button" onClick={() => setAgreed((current) => !current)}>
+        <span className={"agreement-check" + (agreed ? " checked" : "")}></span>
+        <span>开通即同意 <a href="#">《会员服务协议》</a></span>
+      </button>
+    </section>
+  );
+}
+
+function BenefitCard({ card }) {
   return (
     <article className={"benefit-item-card benefit-type-" + card.type}>
       <div className="benefit-item-head">
@@ -330,7 +338,7 @@ function BenefitCard({ card, onClaim }) {
       {card.type === "daily" ? <DailyCoupon items={card.items} /> : null}
       {card.type === "carOwner" ? <CarOwner items={card.items} /> : null}
 
-      <button type="button" className="benefit-claim-btn" onClick={onClaim}>开通可领</button>
+      <button type="button" className="benefit-claim-btn">开通可领</button>
     </article>
   );
 }

@@ -2107,6 +2107,14 @@ p {
     padding-bottom: 112px;
 }
 
+.app-shell-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 86px;
+    z-index: 6;
+}
+
 .app-screen::-webkit-scrollbar {
     display: none;
 }
@@ -2126,7 +2134,7 @@ p {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 22px;
+    margin-bottom: 14px;
 }
 
 .app-brand-mark,
@@ -2178,33 +2186,33 @@ p {
     position: relative;
     display: flex;
     align-items: center;
-    min-height: 56px;
-    margin-bottom: 20px;
-    padding: 0 20px 0 54px;
+    min-height: 48px;
+    margin-bottom: 18px;
+    padding: 0 18px 0 48px;
     color: #9aa6b7;
     background: #fff;
     border-radius: 999px;
     box-shadow: 0 16px 38px rgba(51, 67, 97, 0.08);
-    font-size: 1.2rem;
+    font-size: 1.08rem;
     font-weight: 700;
 }
 
 .search-shell::before {
     content: "";
     position: absolute;
-    left: 22px;
-    width: 18px;
-    height: 18px;
-    border: 3px solid #a8b3c4;
+    left: 19px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #a8b3c4;
     border-radius: 50%;
 }
 
 .search-shell::after {
     content: "";
     position: absolute;
-    left: 39px;
-    width: 10px;
-    height: 3px;
+    left: 33px;
+    width: 9px;
+    height: 2px;
     background: #a8b3c4;
     border-radius: 999px;
     transform: rotate(45deg);
@@ -2455,7 +2463,7 @@ p {
 }
 
 .benefits-screen-inner {
-    padding-bottom: 182px;
+    padding-bottom: 228px;
 }
 
 .benefit-bg-panel {
@@ -2899,13 +2907,10 @@ p {
 }
 
 .floating-price-card {
-    position: sticky;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 8;
-    margin: -140px -20px 0;
-    padding: 10px 0 10px;
+    position: relative;
+    z-index: 1;
+    margin: 0 -20px;
+    padding: 10px 22px 10px;
     background: rgba(255, 255, 255, 0.92);
     border-radius: 16px 16px 0 0;
     box-shadow: 0 18px 42px rgba(52, 31, 21, 0.20);
@@ -2924,9 +2929,9 @@ p {
 .floating-price-main {
     display: grid;
     grid-template-columns: 1.24fr 1fr;
-    width: calc(100% - 24px);
+    width: 100%;
     min-height: 72px;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     overflow: hidden;
     border: 0;
@@ -2948,7 +2953,7 @@ p {
     gap: 10px;
     color: #ffd0a9;
     background: linear-gradient(135deg, #1f2b3a, #0f1926);
-    clip-path: polygon(0 0, 94% 0, 84% 100%, 0 100%);
+    clip-path: polygon(0 0, 96% 0, 86% 100%, 0 100%);
 }
 
 .floating-price-left strong {
@@ -3008,7 +3013,8 @@ p {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin: 8px 0 0 12px;
+    width: 100%;
+    margin: 8px 0 0;
     padding: 0;
     border: 0;
     color: #a7a7a7;
@@ -3094,7 +3100,7 @@ p {
 
 .app-tabbar {
     position: relative;
-    z-index: 5;
+    z-index: 7;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     min-height: 86px;
@@ -3455,8 +3461,8 @@ p {
     .mobile-app-shell { width: 100%; height: 100dvh; min-height: 100dvh; border: 0; border-radius: 0; box-shadow: none; }
     .app-screen { padding-inline: 18px; }
     .app-screen-inner { padding-bottom: 108px; }
-    .benefits-screen-inner { padding-bottom: 176px; }
-    .floating-price-card { bottom: 0; margin: -136px -18px 0; }
+    .benefits-screen-inner { padding-bottom: 220px; }
+    .floating-price-card { margin-inline: -18px; padding-inline: 22px; }
 }
 
 @media (max-width: 370px) {
