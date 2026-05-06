@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 import AppShell from "../components/AppShell.jsx";
 
 const homeQuickEntries = [
-  { label: "查风险", icon: "shield", to: "https://m.udataai.com/?udchl=UO8NQWCD&ut=8", external: true, badge: null },
-  { label: "查企业", icon: "tower", to: "#", badge: "限免" },
-  { label: "背调", icon: "user-search", to: "#", badge: null },
-  { label: "查保姆", icon: "guard", to: "#", badge: "防骚扰" },
-  { label: "手机报告", icon: "phone", to: "#", badge: null },
-  { label: "查车辆", icon: "car", to: "#", badge: null },
-  { label: "婚恋查", icon: "heart", to: "#", badge: null },
-  { label: "信用管家", icon: "wallet", to: "#", badge: "AI优化" },
-  { label: "课堂", icon: "book", to: "#", badge: "提评分" },
+  { label: "查风险", icon: "shield", to: "https://m.udataai.com/?udchl=UO8NQWCD&ut=8", external: true, badge: "AI优化" },
+  { label: "查企业", icon: "tower", to: "https://qixun.udataai.com/?udchl=Ul2c4JGD&ut=4", external: true, badge: null },
+  { label: "查财税", icon: "user-search", to: "https://m.gzzdcredit.com/?udchl=UZtgfvCD&ut=3", external: true, badge: null },
+  { label: "查保姆", icon: "guard", to: "https://m.udataai.com/?udchl=UkM4q7JD&ut=7", external: true, badge: null },
+  { label: "手机报告", icon: "phone", to: "https://m.udataai.com/?udchl=UfNELh7D&ut=7", external: true, badge: "防骚扰" },
+  { label: "查车辆", icon: "car", to: "https://m.udataai.com/?udchl=UMdYg76D&ut=1", external: true, badge: null },
+  { label: "婚恋查", icon: "heart", to: "https://m.udataai.com/?udchl=UaoreseD&ut=5", external: true, badge: null },
+  { label: "司法案件", icon: "wallet", to: "https://m.udataai.com/advlogin?udchl=UY1BSgwD&ut=2", external: true, badge: "限免" },
+  { label: "查学历", icon: "book", to: "https://m.udataai.com/?udchl=UeK6PCWD&ut=5", external: true, badge: null },
   { label: "运势", icon: "compass", to: "/assessments", badge: null }
 ];
 
@@ -65,7 +65,11 @@ const benefitCards = [
 
 export default function AppPrototypePage({ activeTab }) {
   return (
-    <AppShell activeTab={activeTab} screenClassName={activeTab === "benefits" ? "benefits-screen" : ""}>
+    <AppShell
+      activeTab={activeTab}
+      screenClassName={activeTab === "benefits" ? "benefits-screen" : ""}
+      screenInnerClassName={activeTab === "benefits" ? "benefits-screen-inner" : ""}
+    >
       {renderTab(activeTab)}
     </AppShell>
   );
@@ -95,8 +99,8 @@ function HomeTab() {
           <p className="app-brand-mark">优鉴信用</p>
         </div>
         <div className="app-top-actions">
-          <button className="icon-pill" type="button">客服</button>
-          <button className="icon-pill" type="button">报告</button>
+          <a className="icon-pill" href="https://a8-im.7x24cc.com/phone_webChat.html?accountId=N000000050790&chatId=292fda02-6f42-465d-a2b9-4d8c0dec68ef" target="_blank" rel="noreferrer">客服</a>
+          <Link className="icon-pill" to="/reports">报告</Link>
         </div>
       </header>
 
@@ -148,7 +152,7 @@ function HomeTab() {
           <p>申请风险</p>
           <strong>风险偏高</strong>
         </div>
-        <a className="hero-cta" href="https://m.udataai.com/?udchl=UO8NQWCD&ut=8" target="_blank" rel="noreferrer">立即排查风险</a>
+        <a className="hero-cta" href="https://m.udataai.com/pay?udchl=UMdYgZbD&ut=5" target="_blank" rel="noreferrer">立即排查风险</a>
       </section>
 
       <section className="promo-grid" aria-label="运营卡片">
@@ -166,12 +170,12 @@ function HomeTab() {
           </div>
           <span className="promo-placeholder promo-green"></span>
         </article>
-        <article className="promo-card promo-card-event">
+        <Link className="promo-card promo-card-event" to="/benefits">
           <div>
             <h2>优鉴会员</h2>
             <p>免费赠 10 次</p>
           </div>
-        </article>
+        </Link>
         <article className="promo-card promo-card-article">
           <div>
             <h2>2026 逾期记录</h2>
@@ -413,8 +417,8 @@ function MeTab() {
           </div>
         </div>
         <div className="profile-actions">
-          <button className="circle-action" type="button">客</button>
-          <button className="circle-action" type="button">设</button>
+          <button className="circle-action" type="button">客服</button>
+          <button className="circle-action" type="button">设置</button>
         </div>
       </header>
 
@@ -423,7 +427,7 @@ function MeTab() {
           <h2>会员信息</h2>
           <p>开通会员享特权</p>
         </div>
-        <button className="member-info-cta" type="button">立即查看</button>
+        <Link className="member-info-cta" to="/benefits">立即查看</Link>
       </section>
 
       <section className="me-banner-card">Banner 广告位</section>
@@ -459,7 +463,7 @@ function MeTab() {
           <strong>优鉴豆</strong>
           <p>0</p>
         </div>
-        <button className="cash-button" type="button">赚现金</button>
+        <a className="cash-button" href="https://m.shuzhigui.com/login?udchl=UY1BS41D&ut=1" target="_blank" rel="noreferrer">赚现金</a>
       </section>
 
       <section className="service-list-card">

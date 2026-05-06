@@ -7,11 +7,13 @@ const bottomTabs = [
   { key: "me", label: "我的", to: "/me", icon: "user" }
 ];
 
-export default function AppShell({ children, activeTab = "home", screenClassName = "" }) {
+export default function AppShell({ children, activeTab = "home", screenClassName = "", screenInnerClassName = "" }) {
   return (
     <main className="app-prototype-page">
       <div className="mobile-app-shell">
-        <section className={"app-screen " + screenClassName}>{children}</section>
+        <section className={"app-screen " + screenClassName}>
+          <div className={"app-screen-inner " + screenInnerClassName}>{children}</div>
+        </section>
         <nav className="app-tabbar" aria-label="主导航">
           {bottomTabs.map((tab) => (
             <NavLink

@@ -30,7 +30,7 @@ export default function AssessmentsAppPage() {
           <Link className="assessments-back" to="/">返回</Link>
           <div>
             <p>Assessment Library</p>
-            <h1>优测小宇宙</h1>
+            <h1>优鉴信用</h1>
             <span>为探索自己的人设计</span>
           </div>
         </header>
