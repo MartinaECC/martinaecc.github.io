@@ -17,5 +17,4 @@ dist/
 .opencode/skills/*
 !.opencode/skills/martinaecc-app-resolution/
 !.opencode/skills/martinaecc-app-resolution/SKILL.md
-AGENTS.md
 docs/

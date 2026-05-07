@@ -1,6 +1,9 @@
+import { Capacitor } from "@capacitor/core";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AppShell from "../components/AppShell.jsx";
+
+const nativeLinkProps = Capacitor.isNativePlatform() ? { rel: "noreferrer" } : { target: "_blank", rel: "noreferrer" };
 
 const homeQuickEntries = [
   { label: "查风险", icon: "shield", to: "https://m.udataai.com/?udchl=UO8NQWCD&ut=8", external: true, badge: "AI优化" },
@@ -102,7 +105,7 @@ function HomeTab() {
           <p className="app-brand-mark">优鉴信用</p>
         </div>
         <div className="app-top-actions">
-          <a className="icon-pill" href="https://a8-im.7x24cc.com/phone_webChat.html?accountId=N000000050790&chatId=292fda02-6f42-465d-a2b9-4d8c0dec68ef" target="_blank" rel="noreferrer">客服</a>
+          <a className="icon-pill" href="https://a8-im.7x24cc.com/phone_webChat.html?accountId=N000000050790&chatId=292fda02-6f42-465d-a2b9-4d8c0dec68ef" {...nativeLinkProps}>客服</a>
           <Link className="icon-pill" to="/reports">报告</Link>
         </div>
       </header>
@@ -112,7 +115,7 @@ function HomeTab() {
       <section className="quick-grid" aria-label="快捷入口">
         {homeQuickEntries.map((entry) => (
           entry.external ? (
-            <a key={entry.label} className="quick-entry" href={entry.to} target="_blank" rel="noreferrer">
+            <a key={entry.label} className="quick-entry" href={entry.to} {...nativeLinkProps}>
               <span className="quick-icon-wrap">
                 {entry.badge ? <span className="quick-badge">{entry.badge}</span> : null}
                 <span className={"quick-icon icon-" + entry.icon} aria-hidden="true"></span>
@@ -155,7 +158,7 @@ function HomeTab() {
           <p>申请风险</p>
           <strong>风险偏高</strong>
         </div>
-        <a className="hero-cta" href="https://m.udataai.com/pay?udchl=UMdYgZbD&ut=5" target="_blank" rel="noreferrer">立即排查风险</a>
+        <a className="hero-cta" href="https://m.udataai.com/pay?udchl=UMdYgZbD&ut=5" {...nativeLinkProps}>立即排查风险</a>
       </section>
 
       <section className="promo-grid" aria-label="运营卡片">
@@ -471,7 +474,7 @@ function MeTab() {
           <strong>优鉴豆</strong>
           <p>0</p>
         </div>
-        <a className="cash-button" href="https://m.shuzhigui.com/login?udchl=UY1BS41D&ut=1" target="_blank" rel="noreferrer">赚现金</a>
+        <a className="cash-button" href="https://m.shuzhigui.com/login?udchl=UY1BS41D&ut=1" {...nativeLinkProps}>赚现金</a>
       </section>
 
       <section className="service-list-card">

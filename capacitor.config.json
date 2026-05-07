@@ -1,0 +1,14 @@
+{
+  "appId": "com.martinaecc.tests",
+  "appName": "优鉴信用",
+  "webDir": "dist",
+  "server": {
+    "allowNavigation": [
+      "m.udataai.com",
+      "qixun.udataai.com",
+      "m.gzzdcredit.com",
+      "a8-im.7x24cc.com",
+      "m.shuzhigui.com"
+    ]
+  }
+}
